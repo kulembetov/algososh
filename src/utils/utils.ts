@@ -11,7 +11,7 @@ export const swap = <T>(arr: T[], firstIndex: number, secondIndex: number) => {
 export const getRandomInt = (min: number, max: number) => {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.random() * ((max - min + 1) | 0) + min;
 };
 
 // ожидание заданного количества миллисекунд

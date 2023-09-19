@@ -12,7 +12,7 @@ import { iterativeFibonacci } from './utils';
 // определение функционального компонента
 export const FibonacciPage: React.FC = () => {
   // определяет состояния
-  const [inputNumber, setInputNumber] = useState<number>(-1);
+  const [inputNumber, setInputNumber] = useState(-1);
   const [generatedNumbers, setGeneratedNumbers] = useState<
     (TDataElement | null)[]
   >([]);

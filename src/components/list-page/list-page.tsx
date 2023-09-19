@@ -5,6 +5,7 @@ import { ArrowIcon } from '../../components/ui/icons/arrow-icon';
 import { Input } from '../../components/ui/input/input';
 import { SolutionLayout } from '../../components/ui/solution-layout/solution-layout';
 import { SHORT_DELAY_IN_MS } from '../../constants/delays';
+import useToggles from '../../hooks/useToggles';
 import { ElementStates, TDataElement } from '../../types/types';
 import { updateElementsWithInterval } from '../../utils/utils';
 import styles from './list-page.module.css';
@@ -23,13 +24,15 @@ export const ListPage: FC = () => {
   const [inputIndex, setInputIndex] = useState<number>(-1);
   const [listElements, setListElements] = useState<(TDataElement | null)[]>([]);
   const [inProgress, setInProgress] = useState(false);
-  const [isAddingHead, setIsAddingHead] = useState(false);
-  const [isDeletingHead, setIsDeletingHead] = useState(false);
-  const [isAddingTail, setIsAddingTail] = useState(false);
-  const [isDeletingTail, setIsDeletingTail] = useState(false);
-  const [isAddingAtIndex, setIsAddingAtIndex] = useState(false);
-  const [isDeletingAtIndex, setIsDeletingAtIndex] = useState(false);
   const [isComponentMounted, setIsMounted] = useState(false);
+  const [toggles, toggleActions] = useToggles({
+    isAddingHead: false,
+    isDeletingHead: false,
+    isAddingTail: false,
+    isDeletingTail: false,
+    isAddingAtIndex: false,
+    isDeletingAtIndex: false,
+  });
 
   // определяет флаг монтирования компонента
   useEffect(() => {
@@ -67,7 +70,7 @@ export const ListPage: FC = () => {
   // обрабатывает добавление в головной
   const handleAddToHeadClick = async () => {
     setInProgress(true);
-    setIsAddingHead(true);
+    toggleActions.isAddingHead(true);
     // помечает головной элемент для изменения
     listElements[0]!.isHead = false;
     listElements[0]!.isLinked = true;
@@ -100,7 +103,7 @@ export const ListPage: FC = () => {
       isComponentMounted,
     );
     setInProgress(false);
-    setIsAddingHead(false);
+    toggleActions.isAddingHead(false);
     setInputIndex(-1);
     setInputValue('');
   };
@@ -108,7 +111,7 @@ export const ListPage: FC = () => {
   // обрабатывает добавление хвостового элемента
   const handleAddTailClick = async () => {
     setInProgress(true);
-    setIsAddingTail(true);
+    toggleActions.isAddingTail(true);
     let tailIndex = list.getSize() - 1;
     if (tailIndex === 0) {
       listElements[tailIndex]!.isHead = false;
@@ -146,7 +149,7 @@ export const ListPage: FC = () => {
       isComponentMounted,
     );
     setInProgress(false);
-    setIsAddingTail(false);
+    toggleActions.isAddingTail(false);
     setInputIndex(-1);
     setInputValue('');
   };
@@ -154,7 +157,7 @@ export const ListPage: FC = () => {
   // обрабатывает удаление головного элемента
   const handleDeleteHeadClick = async () => {
     setInProgress(true);
-    setIsDeletingHead(true);
+    toggleActions.isDeletingHead(true);
     // помечает головной элемент для изменения
     listElements[0]!.changingPosition = true;
     listElements[0]!.newValue = listElements[0]!.value;
@@ -177,7 +180,7 @@ export const ListPage: FC = () => {
       isComponentMounted,
     );
     setInProgress(false);
-    setIsDeletingHead(false);
+    toggleActions.isDeletingHead(false);
     setInputIndex(-1);
     setInputValue('');
   };
@@ -185,7 +188,7 @@ export const ListPage: FC = () => {
   // обрабатывает удаление хвостового элемента 
   const handleDeleteTailClick = async () => {
     setInProgress(true);
-    setIsDeletingTail(true);
+    toggleActions.isDeletingTail(true);
     listElements[list.getSize() - 1]!.changingPosition = true;
     listElements[list.getSize() - 1]!.newValue =
       listElements[list.getSize() - 1]!.value;
@@ -209,7 +212,7 @@ export const ListPage: FC = () => {
       isComponentMounted,
     );
     setInProgress(false);
-    setIsDeletingTail(false);
+    toggleActions.isDeletingTail(false);
     setInputIndex(-1);
     setInputValue('');
   };
@@ -217,7 +220,7 @@ export const ListPage: FC = () => {
   // обрабатывает добавление элемента по индексу
   const handleAddIndexClick = async () => {
     setInProgress(true);
-    setIsAddingAtIndex(true);
+    toggleActions.isAddingAtIndex(true);
     list.addAtIndex(inputIndex, inputValue);
     for (let i = 0; i <= inputIndex; i++) {
       listElements[i]!.state = ElementStates.Changing;
@@ -254,7 +257,7 @@ export const ListPage: FC = () => {
       isComponentMounted,
     );
     setInProgress(false);
-    setIsAddingAtIndex(false);
+    toggleActions.isAddingAtIndex(false);
     setInputIndex(-1);
     setInputValue('');
   };
@@ -262,7 +265,7 @@ export const ListPage: FC = () => {
   // обрабатывает удаление элемента по индексу
   const handleDeleteIndexClick = async () => {
     setInProgress(true);
-    setIsDeletingAtIndex(true);
+    toggleActions.isDeletingAtIndex(true);
     list.deleteAtIndex(inputIndex);
     for (let i = 0; i <= inputIndex; i++) {
       listElements[i]!.state = ElementStates.Changing;
@@ -298,7 +301,7 @@ export const ListPage: FC = () => {
       listElements[i]!.state = ElementStates.Default;
     }
     setInProgress(false);
-    setIsDeletingAtIndex(false);
+    toggleActions.isDeletingAtIndex(false);
     setInputIndex(-1);
     setInputValue('');
   };
@@ -320,28 +323,28 @@ export const ListPage: FC = () => {
           <Button
             text='Добавить в head'
             onClick={handleAddToHeadClick}
-            isLoader={isAddingHead}
-            disabled={(inProgress && !isAddingHead) || inputValue.length === 0}
+            isLoader={toggles.isAddingHead}
+            disabled={(inProgress && !toggles.isAddingHead) || inputValue.length === 0}
             extraClass={styles.small}
           />
           <Button
             text='Добавить в tail'
             onClick={handleAddTailClick}
-            isLoader={isAddingTail}
-            disabled={(inProgress && !isAddingTail) || inputValue.length === 0}
+            isLoader={toggles.isAddingTail}
+            disabled={(inProgress && !toggles.isAddingTail) || inputValue.length === 0}
             extraClass={styles.small}
           />
           <Button
             text='Удалить из head'
             onClick={handleDeleteHeadClick}
-            isLoader={isDeletingHead}
+            isLoader={toggles.isDeletingHead}
             disabled={list.isEmpty() || list.getSize() < 2}
             extraClass={styles.small}
           />
           <Button
             text='Удалить из tail'
             onClick={handleDeleteTailClick}
-            isLoader={isDeletingTail}
+            isLoader={toggles.isDeletingTail}
             disabled={list.isEmpty() || list.getSize() < 2}
             extraClass={styles.small}
           />
@@ -359,7 +362,7 @@ export const ListPage: FC = () => {
             text='Добавить по индексу'
             extraClass={styles.large}
             onClick={handleAddIndexClick}
-            isLoader={isAddingAtIndex}
+            isLoader={toggles.isAddingAtIndex}
             disabled={
               inputIndex < 0 ||
               inputIndex >= list.getSize() ||
@@ -370,7 +373,7 @@ export const ListPage: FC = () => {
             text='Удалить по индексу'
             extraClass={styles.large}
             onClick={handleDeleteIndexClick}
-            isLoader={isDeletingAtIndex}
+            isLoader={toggles.isDeletingAtIndex}
             disabled={
               inputIndex < 0 || list.isEmpty() || inputIndex >= list.getSize()
             }
@@ -380,7 +383,7 @@ export const ListPage: FC = () => {
       <ul className={styles.list}>
         {listElements.map((element, index) => (
           <div className={styles.node} key={index}>
-            {(isAddingHead || isAddingTail || isAddingAtIndex) &&
+            {(toggles.isAddingHead || toggles.isAddingTail || toggles.isAddingAtIndex) &&
               element?.changingPosition && (
                 <Circle
                   state={ElementStates.Changing}
@@ -397,7 +400,7 @@ export const ListPage: FC = () => {
               index={index}
               extraClass={'mr-6 ml-6'}
             />
-            {(isDeletingHead || isDeletingTail || isDeletingAtIndex) &&
+            {(toggles.isDeletingHead || toggles.isDeletingTail || toggles.isDeletingAtIndex) &&
               element?.changingPosition && (
                 <Circle
                   state={ElementStates.Changing}
