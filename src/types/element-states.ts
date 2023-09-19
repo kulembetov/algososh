@@ -1,5 +1,9 @@
+// перечисление состояний элемента
 export enum ElementStates {
-  Default = "default",
-  Changing = "changing",
-  Modified = "modified",
+  // стандартное состояние
+  Default = 'default',
+  // изменяющееся состояние
+  Changing = 'changing',
+  // модифицированное состояние
+  Modified = 'modified',
 }
