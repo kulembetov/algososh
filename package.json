@@ -46,6 +46,7 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
     "css-loader": "^6.8.1",
+    "gh-pages": "^6.0.0",
     "postcss": "^8.4.29",
     "postcss-loader": "^7.3.3"
   }
