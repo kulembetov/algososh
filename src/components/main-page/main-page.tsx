@@ -1,27 +1,28 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
 import { Link } from "react-router-dom";
-
 import styles from "./main-page.module.css";
 
+// интерфейс для главной страницы
 interface MainPageProps {
   extraClass?: string;
 }
 
+// определение функционального компонента
 export const MainPage: React.FC<MainPageProps> = ({ extraClass = "" }) => {
   return (
     <main className={`${styles.content} ${extraClass}`}>
-      <div className={styles.title_box}>
+      <div className={styles.titleBox}>
         <h1 className={`text text_type_h1 text_color_h1 ${styles.title}`}>
           МБОУ АЛГОСОШ
         </h1>
         <p
-          className={`text text_type_fibonacci text_color_secondary ${styles.fibonacci_title}`}
+          className={`text text_type_fibonacci text_color_secondary ${styles.fibonacciTitle}`}
         >
           им. Фибоначчи
         </p>
       </div>
-      <div className={styles.cards_box}>
+      <div className={styles.cardsBox}>
         <Link className={styles.link} to="/recursion">
           <div className={`${styles.card} ${styles.string}`} />
         </Link>
@@ -43,11 +44,11 @@ export const MainPage: React.FC<MainPageProps> = ({ extraClass = "" }) => {
       </div>
       <Marquee className={styles.ticker} gradient={false} speed={200}>
         <p
-          className={`text text_type_ticker text_color_secondary ${styles.ticker_text}`}
+          className={`text text_type_ticker text_color_secondary ${styles.tickerText}`}
         >
           Вдохновлено школами, в которых не учили алгоритмам
         </p>
-        <div className={styles.dot_box}>
+        <div className={styles.dotBox}>
           <p className={styles.dot} />
         </div>
       </Marquee>

@@ -1,0 +1,48 @@
+.box {
+  margin: 0 auto;
+  max-width: 1240px;
+}
+
+.controls {
+  padding-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.small {
+  width: 180px;
+}
+
+.large {
+  width: 372px;
+}
+
+.list {
+  margin-top: 120px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+
+.node {
+  padding: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adding {
+  position: absolute;
+  top: -64px;
+  left: 24px;
+}
+
+.deleting {
+  position: absolute;
+  top: 120px;
+  left: 24px;
+}

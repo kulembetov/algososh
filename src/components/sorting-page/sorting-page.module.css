@@ -1,0 +1,39 @@
+.box {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1024px;
+  padding-bottom: 48px;
+}
+
+.radios {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.buttons {
+  width: 100%;
+  max-width: 730px;
+  display: flex;
+  justify-content: start;
+}
+
+.bars {
+  margin: 0 auto;
+  padding: 0;
+  width: 940px;
+  height: 330px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  column-gap: 16px;
+  row-gap: 48px;
+  list-style-type: none;
+}
+
+.button {
+  min-width: 210px;
+}

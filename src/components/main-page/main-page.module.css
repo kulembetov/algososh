@@ -1,5 +1,5 @@
 .content {
-  background-image: url("../../images/bg.jpg");
+  background-image: url('../../images/bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
@@ -9,12 +9,7 @@
   justify-content: center;
 }
 
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.title_box {
+.titleBox {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,14 +22,14 @@
   line-height: 152px;
 }
 
-.fibonacci_title {
+.fibonacciTitle {
   display: inline-block;
   writing-mode: vertical-lr;
   transform: rotate(180deg);
   margin-left: -6px;
 }
 
-.cards_box {
+.cardsBox {
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: repeat(3, 1fr);
@@ -53,51 +48,51 @@
 }
 
 .string {
-  background-image: url("../../images/string.svg");
+  background-image: url('../../images/string.svg');
 }
 
 .string:hover {
-  background-image: url("../../images/string-hover.svg");
+  background-image: url('../../images/string-hover.svg');
 }
 
 .fibonacci {
-  background-image: url("../../images/fibonacci.svg");
+  background-image: url('../../images/fibonacci.svg');
 }
 
 .fibonacci:hover {
-  background-image: url("../../images/fibonacci-hover.svg");
+  background-image: url('../../images/fibonacci-hover.svg');
 }
 
 .arr {
-  background-image: url("../../images/arr.svg");
+  background-image: url('../../images/arr.svg');
 }
 
 .arr:hover {
-  background-image: url("../../images/arr-hover.svg");
+  background-image: url('../../images/arr-hover.svg');
 }
 
 .stack {
-  background-image: url("../../images/stack.svg");
+  background-image: url('../../images/stack.svg');
 }
 
 .stack:hover {
-  background-image: url("../../images/stack-hover.svg");
+  background-image: url('../../images/stack-hover.svg');
 }
 
 .queue {
-  background-image: url("../../images/queue.svg");
+  background-image: url('../../images/queue.svg');
 }
 
 .queue:hover {
-  background-image: url("../../images/queue-hover.svg");
+  background-image: url('../../images/queue-hover.svg');
 }
 
 .list {
-  background-image: url("../../images/list.svg");
+  background-image: url('../../images/list.svg');
 }
 
 .list:hover {
-  background-image: url("../../images/list-hover.svg");
+  background-image: url('../../images/list-hover.svg');
 }
 
 .ticker {
@@ -106,7 +101,7 @@
   overflow: hidden;
 }
 
-.dot_box {
+.dotBox {
   margin: 0 auto;
   padding: 0 78px;
 }
