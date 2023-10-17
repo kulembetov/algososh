@@ -82,6 +82,7 @@ export const StringPage: FC = () => {
     <SolutionLayout title='Строка'>
       <form className={styles.form} onSubmit={handleSubmitButtonClick}>
         <Input
+          data='input-value'
           value={inputString}
           isLimitText={true}
           maxLength={11}

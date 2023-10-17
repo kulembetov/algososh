@@ -312,6 +312,8 @@ export const ListPage: FC = () => {
       <div className={styles.box}>
         <div className={styles.controls}>
           <Input
+            type='text'
+            data='input-value'
             placeholder='Введите значение'
             min={1}
             value={inputValue}
@@ -322,6 +324,8 @@ export const ListPage: FC = () => {
           />
           <Button
             text='Добавить в head'
+            type='button'
+            data='add-at-head-button'
             onClick={handleAddToHeadClick}
             isLoader={toggles.isAddingHead}
             disabled={(inProgress && !toggles.isAddingHead) || inputValue.length === 0}
@@ -329,6 +333,8 @@ export const ListPage: FC = () => {
           />
           <Button
             text='Добавить в tail'
+            type='button'
+            data='add-at-tail-button'
             onClick={handleAddTailClick}
             isLoader={toggles.isAddingTail}
             disabled={(inProgress && !toggles.isAddingTail) || inputValue.length === 0}
@@ -336,6 +342,8 @@ export const ListPage: FC = () => {
           />
           <Button
             text='Удалить из head'
+            type='button'
+            data='delete-at-head-button'
             onClick={handleDeleteHeadClick}
             isLoader={toggles.isDeletingHead}
             disabled={list.isEmpty() || list.getSize() < 2}
@@ -343,6 +351,8 @@ export const ListPage: FC = () => {
           />
           <Button
             text='Удалить из tail'
+            type='button'
+            data='delete-at-tail-button'
             onClick={handleDeleteTailClick}
             isLoader={toggles.isDeletingTail}
             disabled={list.isEmpty() || list.getSize() < 2}
@@ -351,8 +361,9 @@ export const ListPage: FC = () => {
         </div>
         <div className={styles.controls}>
           <Input
-            placeholder='Введите индекс'
             type='number'
+            data='index-value'
+            placeholder='Введите индекс'
             extraClass={styles.input}
             value={inputIndex >= 0 ? inputIndex : ''}
             onChange={handleIndexChange}
@@ -360,6 +371,8 @@ export const ListPage: FC = () => {
           />
           <Button
             text='Добавить по индексу'
+            type='button'
+            data='add-at-index-button'
             extraClass={styles.large}
             onClick={handleAddIndexClick}
             isLoader={toggles.isAddingAtIndex}
@@ -371,6 +384,8 @@ export const ListPage: FC = () => {
           />
           <Button
             text='Удалить по индексу'
+            type='button'
+            data='delete-at-index-button'
             extraClass={styles.large}
             onClick={handleDeleteIndexClick}
             isLoader={toggles.isDeletingAtIndex}
@@ -382,7 +397,7 @@ export const ListPage: FC = () => {
       </div>
       <ul className={styles.list}>
         {listElements.map((element, index) => (
-          <div className={styles.node} key={index}>
+          <div className={styles.node} key={index} data-test-id='circle'>
             {(toggles.isAddingHead || toggles.isAddingTail || toggles.isAddingAtIndex) &&
               element?.changingPosition && (
                 <Circle

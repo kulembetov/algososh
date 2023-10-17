@@ -128,6 +128,7 @@ export const StackPage: React.FC = () => {
     <SolutionLayout title='Стек'>
       <div className={styles.box}>
         <Input
+          data='input-value'
           value={inputValue}
           maxLength={4}
           isLimitText={true}
@@ -140,6 +141,7 @@ export const StackPage: React.FC = () => {
           }
           text='Добавить'
           onClick={handleAddClick}
+          type={'submit'}
         />
         <Button
           disabled={inProgress || stackElements.length === 0}
@@ -151,6 +153,7 @@ export const StackPage: React.FC = () => {
           disabled={inProgress || stackElements.length === 0}
           text='Очистить'
           onClick={handleClearClick}
+          type={'reset'}
         />
       </div>
       <ul className={styles.stack}>

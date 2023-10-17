@@ -143,6 +143,7 @@ export const QueuePage: React.FC = () => {
     <SolutionLayout title='Очередь'>
       <div className={styles.box}>
         <Input
+          data='input-value'
           value={inputValue}
           maxLength={4}
           isLimitText={true}
@@ -157,6 +158,7 @@ export const QueuePage: React.FC = () => {
           }
           text='Добавить'
           onClick={handleAddClick}
+          type={'submit'}
         />
         <Button
           disabled={inProgress || queue.isEmpty()}
@@ -168,6 +170,7 @@ export const QueuePage: React.FC = () => {
           disabled={inProgress || queue.isEmpty()}
           text='Очистить'
           onClick={handleClearButtonClick}
+          type={'reset'}
         />
       </div>
       <ul className={styles.queue}>
