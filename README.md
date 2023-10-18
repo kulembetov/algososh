@@ -43,7 +43,6 @@
 ```
 git clone https://github.com/kulembetov/algososh.git
 ```
-
 Установить зависимости:
 
 ```

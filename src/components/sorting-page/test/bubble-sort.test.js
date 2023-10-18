@@ -24,4 +24,14 @@ describe('Тест сортировки пузырьком:', () => {
       bubbleSortTest([4, 23, 16, 15, 8, 42], Direction.Descending)
     ).toEqual([42, 23, 16, 15, 8, 4]);
   });
+  it('Массив, который уже отсортирован по возрастанию, не должен изменяться', () => {
+    const sortedArray = [4, 8, 15, 16, 23, 42];
+    const inputArray = [...sortedArray];
+    expect(bubbleSortTest(inputArray, Direction.Ascending)).toEqual(sortedArray);
+  });
+  it('Массив, который уже отсортирован по убыванию, не должен изменяться', () => {
+    const sortedArray = [42, 23, 16, 15, 8, 4];
+    const inputArray = [...sortedArray];
+    expect(bubbleSortTest(inputArray, Direction.Descending)).toEqual(sortedArray);
+  });
 });
