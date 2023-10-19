@@ -2,13 +2,14 @@
 [МБОУ АЛГОСОШ им. Фибоначчи](https://kulembetov.github.io/algososh)
 
 ## Описание
-Одностраничный сайт, был свёрстан по макету из Figma. С возможностью визуализации алгоритмов (строка, последовательность Фибоначчи, сортировка массива, стек, очередь, связный список). Сделан в рамках учёбной деятельности в [Яндекс.Практикуме](https://practicum.yandex.ru) на факультете ["Веб-разработчик плюс"](https://practicum.yandex.ru/web-plus).
+Одностраничный сайт был разработан на основе макета из Figma и предоставляет пользователю возможность визуализации различных алгоритмов, включая работу с строками, последовательностью Фибоначчи, сортировку массивов, управление стеком, очередью и связными списками. Обладает комплексом тестов, включая Unit-тесты и Cypress-тесты. Сделан в рамках учёбной деятельности в [Яндекс.Практикуме](https://practicum.yandex.ru) на факультете ["Веб-разработчик плюс"](https://practicum.yandex.ru/web-plus).
 
 ## Макеты
 * [Макет №1](https://www.figma.com/file/RIkypcTQN5d37g7RRTFid0/Algososh_external_link?type=design&node-id=0-1&mode=design)
 
 ## Чеклисты
 * [Чеклист №1](https://code.s3.yandex.net/web-plus/checklists/checklist_pdf/checklist_19.pdf)
+* [Чеклист №2](https://code.s3.yandex.net/web-developer/checklists-pdf/web-plus/checklist-20.pdf)
 
 ## Стек технологий
 * HTML5
@@ -32,15 +33,16 @@
 * Хуки
 * TypeScript
 * Алгоритмы
+* Unit-тесты
+* Cypress-тесты
 
-## Инструкция по установке и запуску проекта
+## Инструкция по установке, запуску и тестированию проекта
 
 Клонировать репозиторий:
 
 ```
 git clone https://github.com/kulembetov/algososh.git
 ```
-
 Установить зависимости:
 
 ```
@@ -58,6 +60,24 @@ npm start
 ```
 npm run build
 ```
+
+Для запуска Unit-тестов
+
+```
+npm test
+```
+
+Для запуска Cypress-тестов
+
+```
+npx cypress run
+```
+
+Для открытия Cypress-тестов
+```
+npx cypress open
+```
+
 
 ## Строка
 
